@@ -443,9 +443,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3efa8c6089d652f4eb0a5eea9e5c8222, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 2686890238352406469}
-  rotationSpeed: 5
-  offset: {x: 0, y: 2, z: -5}
+  _target: {fileID: 2686890238352406469}
+  _rotationSpeed: 5
+  _offset: {x: 0, y: 2, z: -5}
 --- !u!1001 &1365141590
 PrefabInstance:
   m_ObjectHideFlags: 0

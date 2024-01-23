@@ -6,12 +6,17 @@ public class SimpleCharacterController : MonoBehaviour
 
     private Rigidbody rb;
 
-    void Start()
+    //private void Start()
+    //{
+    //    rb = GetComponent<Rigidbody>();
+    //}
+
+    private void OnValidate()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    private void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
@@ -21,7 +26,7 @@ public class SimpleCharacterController : MonoBehaviour
         MoveCharacter(movement);
     }
 
-    void MoveCharacter(Vector3 direction)
+    private void MoveCharacter(Vector3 direction)
     {
         Vector3 movementAmount = direction * movementSpeed * Time.deltaTime;
 

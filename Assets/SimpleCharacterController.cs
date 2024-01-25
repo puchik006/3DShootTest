@@ -2,29 +2,29 @@ using UnityEngine;
 
 public class SimpleCharacterController : MonoBehaviour
 {
-    [SerializeField, Range(0f, 10f)] private float _movementSpeed = 5f;
-    [SerializeField, Range(1f, 10f)] private float _rotationSpeed = 3f; // New variable for rotation speed
+    [SerializeField, Range(1f, 10f)] private float _movementSpeed = 5f;
+    [SerializeField, Range(1f, 10f)] private float _rotationSpeed = 3f;
+    
     private Rigidbody _rb;
+    private AnimationHandler _animationHandler;
 
     private void OnValidate()
     {
         _rb = GetComponent<Rigidbody>();
+        _animationHandler = GetComponent<AnimationHandler>();
     }
 
     private void Update()
     {
-        // Get movement input
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        // Calculate movement vector based on character rotation
         Vector3 movement = CalculateMovementVector(horizontalInput, verticalInput);
 
-        // Move the character
         MoveCharacter(movement);
-
-        // Rotate the character based on mouse input
         RotateWithMouse();
+
+        _animationHandler.Walk(verticalInput);
     }
 
     private void MoveCharacter(Vector3 direction)
@@ -64,3 +64,4 @@ public class SimpleCharacterController : MonoBehaviour
         return movement.normalized;
     }
 }
+

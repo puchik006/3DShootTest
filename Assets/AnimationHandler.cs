@@ -10,17 +10,6 @@ public class AnimationHandler: MonoBehaviour
 
     private void OnValidate() => _animator = GetComponent<Animator>();
 
-    public void Walk(float forwardVector)
-    {
-        if (forwardVector > 0)
-        {
-            _animator.SetBool(_isWalkKey, true);
-            Debug.Log("walk");
-        }
-        else
-        {
-            _animator.SetBool(_isWalkKey, false);
-            Debug.Log("not walk");
-        }
-    }
+    public void Walk(float forwardVector) => _animator.SetBool(_isWalkKey, forwardVector > 0);
+
 }

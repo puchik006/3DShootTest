@@ -1,46 +1,25 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class SimpleCharacterController : MonoBehaviour
 {
+    [Header("Movement settings")]
     [SerializeField, Range(1f, 10f)] private float _movementSpeed = 5f;
     [SerializeField, Range(1f, 10f)] private float _rotationSpeed = 3f;
-    
     private Rigidbody _rb;
-    private AnimationHandler _animationHandler;
 
-    private void OnValidate()
+    private void OnValidate() => _rb = GetComponent<Rigidbody>();
+
+    public void MoveCharacter(float horizontalInput,float verticalInput)
     {
-        _rb = GetComponent<Rigidbody>();
-        _animationHandler = GetComponent<AnimationHandler>();
-    }
-
-    private void Update()
-    {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-
         Vector3 movement = CalculateMovementVector(horizontalInput, verticalInput);
-
-        MoveCharacter(movement);
-        RotateWithMouse();
-
-        _animationHandler.Walk(verticalInput);
-    }
-
-    private void MoveCharacter(Vector3 direction)
-    {
-        Vector3 movementAmount = direction * _movementSpeed * Time.deltaTime;
+        Vector3 movementAmount = movement * _movementSpeed * Time.deltaTime;
         _rb.MovePosition(_rb.position + movementAmount);
     }
 
-    private void RotateWithMouse()
+    public void RotateCharacter(float mouseX)
     {
-        float mouseX = Input.GetAxis("Mouse X");
-
-        // Calculate rotation amount based on mouse input
-        Vector3 rotationAmount = new Vector3(0f, mouseX * _rotationSpeed, 0f);
-
-        // Apply rotation to the Rigidbody
+        Vector3 rotationAmount = new (0f, mouseX * _rotationSpeed, 0f);
         _rb.MoveRotation(_rb.rotation * Quaternion.Euler(rotationAmount));
     }
 

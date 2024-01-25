@@ -460,8 +460,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 2686890238352406469}
-  _rotationSpeed: 5
   _offset: {x: 0, y: 2, z: -5}
+  _horizontalRotationSpeed: 5
   _verticalRotationSpeed: 2
 --- !u!1001 &1365141590
 PrefabInstance:
@@ -1210,6 +1210,7 @@ GameObject:
   - component: {fileID: 2686890238359591007}
   - component: {fileID: 2686890238359591008}
   - component: {fileID: 2686890238359591009}
+  - component: {fileID: 2686890238359591010}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -1695,6 +1696,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47727c4507d49134395783c92775cd50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2686890238359591010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2686890238352173605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6c9c4437b342e8429f31546c470806b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _thirdPersonCamera: {fileID: 963194229}
 --- !u!1 &2790504283969262349
 GameObject:
   m_ObjectHideFlags: 0

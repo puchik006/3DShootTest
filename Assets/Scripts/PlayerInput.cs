@@ -6,11 +6,13 @@ public class PlayerInput: MonoBehaviour
     private SimpleCharacterController _characterController;
     private AnimationHandler _animationHandler;
     [SerializeField] private ThirdPersonCamera _thirdPersonCamera;
+    private Shooter _shooter;
 
     private void OnValidate()
     {
         _characterController = GetComponent<SimpleCharacterController>();
         _animationHandler = GetComponent<AnimationHandler>();
+        _shooter = GetComponent<Shooter>();
     }
 
     private void Awake()
@@ -25,6 +27,8 @@ public class PlayerInput: MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
         bool isShiftPressed = Input.GetKey(KeyCode.LeftShift);
+        bool isFirePressed = Input.GetButtonDown("Fire1");
+
 
         _characterController.Move(horizontalInput, verticalInput);
         _characterController.Rotate(mouseX);
@@ -34,6 +38,8 @@ public class PlayerInput: MonoBehaviour
         _animationHandler.Run(isShiftPressed);
 
         _thirdPersonCamera.MoveCamera(mouseY);
+
+        _shooter.Shoot(isFirePressed);
     }
 }
 

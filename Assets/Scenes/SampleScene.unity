@@ -472,6 +472,39 @@ MonoBehaviour:
   _offset: {x: 0, y: 2, z: -5}
   _horizontalRotationSpeed: 5
   _verticalRotationSpeed: 2
+  _maxCameraAngle: 40
+  _minCameraAngle: -40
+--- !u!1 &1067084006
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1067084007}
+  m_Layer: 0
+  m_Name: GunPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1067084007
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067084006}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.361, z: 0.352}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2686890238352406469}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1270878744921852
 GameObject:
   m_ObjectHideFlags: 0
@@ -1946,6 +1979,7 @@ GameObject:
   - component: {fileID: 2686890238359591008}
   - component: {fileID: 2686890238359591009}
   - component: {fileID: 2686890238359591010}
+  - component: {fileID: 2686890238359591011}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -2158,6 +2192,7 @@ Transform:
   m_Children:
   - {fileID: 2686890238352404677}
   - {fileID: 2686890238352404679}
+  - {fileID: 1067084007}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2686890238352406475
@@ -2401,10 +2436,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.16
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 1, z: -0.07}
 --- !u!114 &2686890238359591008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2446,6 +2481,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _thirdPersonCamera: {fileID: 963194229}
+--- !u!114 &2686890238359591011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2686890238352173605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b47bf080fda17c04db8ffda8972542b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 7960599373545614598, guid: cd2fce68a0f1abc49bb79c501839b72e, type: 3}
+  shootPoint: {fileID: 1067084007}
+  bulletSpeed: 50
 --- !u!1 &2790504283969262349
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,7 +21,7 @@ public class ThirdPersonCamera : MonoBehaviour
     {
         // Calculate the desired rotation based on the target's current rotation
         float targetRotationAngle = _target.eulerAngles.y;
-        Quaternion targetRotation = Quaternion.Euler(0f, targetRotationAngle, 0f);
+        Quaternion targetRotation = Quaternion.Euler(0f, _target.eulerAngles.y, 0f);
 
         // Read mouse input for vertical camera movement
         _verticalRotation -= mouseY * _verticalRotationSpeed;

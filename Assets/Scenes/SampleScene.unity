@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 495596285}
   - component: {fileID: 495596284}
   - component: {fileID: 495596283}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1682,8 +1682,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95604160f469ad74db279ce1ce9fd511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 5
+  _baseMovementSpeed: 5
   _rotationSpeed: 3
+  _runSpeed: 2
+  _jumpForce: 0.3
 --- !u!114 &2686890238359591009
 MonoBehaviour:
   m_ObjectHideFlags: 0

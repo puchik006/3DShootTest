@@ -18,11 +18,14 @@ public class PlayerInput: MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
+        bool isShiftPressed = Input.GetKey(KeyCode.LeftShift);
 
-        _characterController.MoveCharacter(horizontalInput, verticalInput);
-        _characterController.RotateCharacter(mouseX);
+        _characterController.Move(horizontalInput, verticalInput);
+        _characterController.Rotate(mouseX);
+        _characterController.Run(isShiftPressed);
 
         _animationHandler.Walk(verticalInput);
+        _animationHandler.Run(isShiftPressed);
 
         _thirdPersonCamera.MoveCamera(mouseY);
     }

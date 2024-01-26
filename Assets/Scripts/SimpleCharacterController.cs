@@ -4,23 +4,34 @@ using UnityEngine;
 public class SimpleCharacterController : MonoBehaviour
 {
     [Header("Movement settings")]
-    [SerializeField, Range(1f, 10f)] private float _movementSpeed = 5f;
+    [SerializeField, Range(1f, 10f)] private float _baseMovementSpeed = 5f;
     [SerializeField, Range(1f, 10f)] private float _rotationSpeed = 3f;
+    [SerializeField, Range(1f, 3f)] private float _runSpeed = 2f;
+    [SerializeField, Range(0.1f, 1f)] private float _jumpForce = 0.1f;
+    private float _runSpeedMultiplier;
     private Rigidbody _rb;
 
     private void OnValidate() => _rb = GetComponent<Rigidbody>();
 
-    public void MoveCharacter(float horizontalInput,float verticalInput)
+
+    public void Move(float horizontalInput, float verticalInput)
     {
+        float currentMovementSpeed = _baseMovementSpeed * _runSpeedMultiplier;
         Vector3 movement = CalculateMovementVector(horizontalInput, verticalInput);
-        Vector3 movementAmount = movement * _movementSpeed * Time.deltaTime;
+        Vector3 movementAmount = movement * currentMovementSpeed * Time.deltaTime;
         _rb.MovePosition(_rb.position + movementAmount);
     }
 
-    public void RotateCharacter(float mouseX)
+    public void Rotate(float mouseX)
     {
-        Vector3 rotationAmount = new (0f, mouseX * _rotationSpeed, 0f);
+        Vector3 rotationAmount = Vector3.up * mouseX;
         _rb.MoveRotation(_rb.rotation * Quaternion.Euler(rotationAmount));
+    }
+
+    public void Run(bool isRun)
+    {
+        float walkMultiplier = 1f;
+        _runSpeedMultiplier = isRun ? _runSpeed : walkMultiplier;
     }
 
     private Vector3 CalculateMovementVector(float horizontalInput, float verticalInput)
@@ -43,4 +54,3 @@ public class SimpleCharacterController : MonoBehaviour
         return movement.normalized;
     }
 }
-

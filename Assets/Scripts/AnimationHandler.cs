@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class AnimationHandler: MonoBehaviour
 {
     private const string _isWalkKey = "IsWalk";

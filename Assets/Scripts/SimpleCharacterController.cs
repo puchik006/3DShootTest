@@ -36,19 +36,8 @@ public class SimpleCharacterController : MonoBehaviour
 
     private Vector3 CalculateMovementVector(float horizontalInput, float verticalInput)
     {
-        // Get the forward and right vectors based on the character's rotation
         Vector3 forward = _rb.transform.forward;
         Vector3 right = _rb.transform.right;
-
-        // Remove the y-component to ensure movement stays on the horizontal plane
-        forward.y = 0f;
-        right.y = 0f;
-
-        // Normalize the vectors to ensure consistent movement speed in all directions
-        forward.Normalize();
-        right.Normalize();
-
-        // Calculate the movement vector based on input and character rotation
         Vector3 movement = (forward * verticalInput) + (right * horizontalInput);
 
         return movement.normalized;

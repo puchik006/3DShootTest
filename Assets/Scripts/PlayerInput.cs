@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(SimpleCharacterController),typeof(AnimationHandler))]
 public class PlayerInput: MonoBehaviour
 {
     private SimpleCharacterController _characterController;
@@ -10,6 +11,11 @@ public class PlayerInput: MonoBehaviour
     {
         _characterController = GetComponent<SimpleCharacterController>();
         _animationHandler = GetComponent<AnimationHandler>();
+    }
+
+    private void Awake()
+    {
+        if (_thirdPersonCamera == null) Debug.Log("Please attach camera to Tiher Person Camera field");
     }
 
     private void Update()
@@ -29,6 +35,5 @@ public class PlayerInput: MonoBehaviour
 
         _thirdPersonCamera.MoveCamera(mouseY);
     }
-
 }
 
